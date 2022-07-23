@@ -51,8 +51,6 @@ stages:
           deployToSlotOrASE: true
           ResourceGroupName: 'Hackathon'
           SlotName: 'production'
-          DockerNamespace: 'polilearningbackend.azurecr.io/backend:latest'
-          DockerRepository: 'polilearningbackend.azurecr.io/backend:latest'
-      # Build and push an image to Azure Container Registry
-      # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
+          DockerNamespace: 'polilearningbackend.azurecr.io'
+          DockerRepository: 'backend'
+          DockerImageTag: 'latest'
