@@ -35,4 +35,21 @@ router.post("/", (req, res, next) => {
   });
 });
 
+router.post("/login", (req, res, next) => {
+  const { email, password } = req.body;
+  Student.findOne({ email: email }, function (err, student) {
+    if (err) {
+      return res.status(500).send(err);
+    } else if (!student) {
+      return res.status(400).send("Student does not exist");
+    } else {
+      if (student.validPassword(password)) {
+        return res.send("Student logged in");
+      } else {
+        return res.status(400).send("Wrong password");
+      }
+    }
+  });
+});
+
 module.exports = router;
